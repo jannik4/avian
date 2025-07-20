@@ -351,7 +351,7 @@ fn trigger_collision_events(
 fn remove_collider_on<E: Event, C: Component>(
     trigger: Trigger<E, C>,
     mut contact_graph: ResMut<ContactGraph>,
-    mut query: Query<&mut CollidingEntities>,
+    mut query: Query<&mut CollidingEntities, Or<(With<Disabled>, Without<Disabled>)>>,
     mut event_writer: EventWriter<CollisionEnded>,
     mut commands: Commands,
 ) {
